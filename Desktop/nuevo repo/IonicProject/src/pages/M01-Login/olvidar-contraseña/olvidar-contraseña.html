@@ -1,0 +1,37 @@
+<!--
+  Generated template for the OlvidarContraseñaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Recuperar contraseña</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <form > 
+        <ion-img width="200" height="200" class="center1"  src="assets/imgs/Logo candado.jpg"></ion-img>
+        <h4 style="color:#000000;font-weight:600;text-align:center;">¿No recuerdas tu contraseña? </h4>
+        <p style="color:#000000;font-weight:600;text-align:center;">Ingresa tu correo electronico y te enviaremos tu contraseña </p>
+    </form>
+    <form [formGroup]="myForm" (ngSubmit)="saveData()" novalidate>             
+        <ion-list id="recuperarContraseA-list4">
+            <ion-item>
+                <ion-label style="text-align:center;" floating>Correo electronico</ion-label>
+                <ion-input formControlName="email" type="email" value="" #email></ion-input>
+            </ion-item>
+            <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Field is required</p>
+                <p color="danger" ion-text *ngIf="myForm.get('email').hasError('email')">It is not an email</p>
+            </ion-item>
+    
+            </ion-list>
+            <div padding>
+                    <button ion-button block type="submit" [disabled]="myForm.invalid" clear (click)='verificacion()' icon-end >Enviar Correo</button>
+            </div>
+     
+    </form>
+</ion-content>
